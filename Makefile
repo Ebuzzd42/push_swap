@@ -6,7 +6,7 @@
 #    By: egerin <egerin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 13:25:18 by egerin            #+#    #+#              #
-#    Updated: 2025/01/15 16:17:34 by egerin           ###   ########.fr        #
+#    Updated: 2025/01/22 14:40:27 by egerin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT_TARGET = ${LIBFT}/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I${LIBFT} -g
 LDFLAGS = -L${LIBFT} -lft
-SRC_FILES = src/parsing.c
+SRC_FILES = src/main.c src/errors.c src/init_stack.c
 SRC = $(SRC_FILES)
 OBJ = $(SRC:.c=.o)
 

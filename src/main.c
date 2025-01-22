@@ -5,16 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 13:24:46 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/15 14:49:53 by egerin           ###   ########.fr       */
+/*   Created: 2025/01/18 10:49:57 by egerin            #+#    #+#             */
+/*   Updated: 2025/01/22 16:03:44 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../includes/push_swap.h"
 
-int	main(int *ac, char **av)
+int	main(int ac, char **av)
 {
-	printf("Hello World");
-	return (0);
+	t_node	*a;
+	t_node	*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
+		av = ft_split(av[1], ' ');
+	init_stack(&a, av);
 }
