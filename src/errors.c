@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:34:57 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/28 14:15:11 by egerin           ###   ########.fr       */
+/*   Updated: 2025/01/28 17:33:22 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,5 @@ int	ft_char(char *str)
 		if (!(*str >= '0' && *str <= '9'))
 			return (1);
 	}
-	return (0);
-}
-
-int	ft_isspace(int c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
 	return (0);
 }

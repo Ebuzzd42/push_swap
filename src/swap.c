@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:50:36 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/28 14:14:00 by egerin           ###   ########.fr       */
+/*   Updated: 2025/01/28 17:30:29 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_swap(t_node **stack)
 {
-	t_node	*c;
 	t_node	*a;
 	t_node	*b;
+	t_node	*c;
 
 	if (*stack = NULL || (*stack)->next == NULL)
 		return ;
