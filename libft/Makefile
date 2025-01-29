@@ -6,7 +6,7 @@
 #    By: egerin <egerin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 15:31:52 by egerin            #+#    #+#              #
-#    Updated: 2025/01/09 16:31:01 by egerin           ###   ########.fr        #
+#    Updated: 2025/01/29 15:12:30 by egerin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,20 +24,23 @@ SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_bac
 
 OBJBONUS = ${SRCBONUS:.c=.o}
 
+%.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 bonus : $(OBJ) $(OBJBONUS)
-	ar rcs $(NAME) $(OBJ) $(OBJBONUS)
+	@ar rcs $(NAME) $(OBJ) $(OBJBONUS)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 
 clean :
-	rm -rf $(OBJ) $(OBJBONUS)
+	@rm -rf $(OBJ) $(OBJBONUS)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
-re : fclean all
+re : @fclean all
 
 .PHONY : clean re all fclean bonus

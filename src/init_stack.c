@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebuzeyd <ebuzeyd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:45:39 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/23 14:47:16 by ebuzeyd          ###   ########.fr       */
+/*   Updated: 2025/01/29 14:28:10 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_stack(t_node **a, char **av)
 	i = 0;
 	while (av[i])
 	{
-		if(ft_char(av[i]))
+		if (ft_char(av[i]))
 			ft_free(a);
 		nbr = ft_atol(av[i]);
 		printf("%ld\n", nbr);
