@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:38:48 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/09 16:30:54 by egerin           ###   ########.fr       */
+/*   Updated: 2025/02/01 14:28:05 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 t_list				*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int     ft_lstsize(t_list *lst);
-t_list  *ft_lstlast(t_list *lst);
-void ft_lstadd_back(t_list **lst, t_list *new);
-void ft_lstdelone(t_list *lst, void (*del)(void *));
-void ft_lstclear(t_list **lst, void (*del)(void *));
-void ft_lstiter(t_list *lst, void (*f)(void *));
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void				ft_lstadd_front(t_list **lst, t_list *new);
+int					ft_lstsize(t_list *lst);
+t_list				*ft_lstlast(t_list *lst);
+void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstdelone(t_list *lst, void (*del)(void *));
+void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstiter(t_list *lst, void (*f)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
+						void (*del)(void *));
 
 #endif
