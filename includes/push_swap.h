@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:17:56 by egerin            #+#    #+#             */
-/*   Updated: 2025/02/01 15:35:51 by egerin           ###   ########.fr       */
+/*   Updated: 2025/02/06 13:42:36 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int				nb;
+	struct s_node	target_node;
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
@@ -38,6 +39,7 @@ t_node				*find_last(t_node *stack);
 int					ft_sorted(t_node *stack);
 int					ft_stack_len(t_node *stack);
 t_node				*ft_find_highest(t_node *stack);
+t_node				*ft_find_smaller(t_node *stack);
 
 /////////commands/////////
 void				ft_reverse_rotate(t_node **stack);

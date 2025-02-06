@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algo2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 10:49:57 by egerin            #+#    #+#             */
-/*   Updated: 2025/02/03 10:00:31 by egerin           ###   ########.fr       */
+/*   Created: 2025/02/03 11:17:03 by egerin            #+#    #+#             */
+/*   Updated: 2025/02/06 13:56:40 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	find_target_node(t_node *a, t_node *b)
 {
-	t_node	*a;
-	t_node	*b;
+	t_node	*tmp;
+	t_node	*target_node;
+	int		i;
 
-	a = NULL;
-	b = NULL;
-	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (1);
-	else if (ac == 2)
-		av = ft_split(av[1], ' ');
-	init_stack(&a, av + 1);
-	if (!ft_sorted(a))
+	while (b)
 	{
-		if (ft_stack_len(a) == 2)
-			sa(&a);
-		if (ft_stack_len(a) == 3)
-			ft_sort_three(&a);
+		i = INT_MAX;
+		tmp = a;
+		while (tmp)
+		{
+			if (tmp->nb > b->nb && tmp->nb < i)
+			{
+				i = tmp->nb;
+				target_node = tmp;
+			}
+			tmp = tmp->next;
+		}
+		if (i == INT_MAX)
+			b->target_node = find_smallest(a);
+		else
+			b->target_node = target_node;
+		b = b->next;
 	}
-	ft_stackfree(&a);
 }
