@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 10:49:57 by egerin            #+#    #+#             */
-/*   Updated: 2025/02/03 10:00:31 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:03:05 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int	main(int ac, char **av)
 	{
 		if (ft_stack_len(a) == 2)
 			sa(&a);
-		if (ft_stack_len(a) == 3)
+		else if (ft_stack_len(a) == 3)
 			ft_sort_three(&a);
+		else
+			sort_stacks(&a, &b);
 	}
 	ft_stackfree(&a);
 }

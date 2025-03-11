@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:18:21 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/29 13:05:28 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:12:59 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void	ft_push(t_node **src, t_node **dest)
 {
-	t_node	*tmp;
+	t_node	*node_to_push;
 
-	if (*src == NULL || (*src)->next == NULL)
+	if (NULL == *src)
 		return ;
-	tmp = *src;
+	node_to_push = *src;
 	*src = (*src)->next;
-	(*src)->prev = NULL;
-	tmp->prev = NULL;
-	if (*dest == NULL)
+	if (*src)
+		(*src)->prev = NULL;
+	node_to_push->prev = NULL;
+	if (NULL == *dest)
 	{
-		*dest = tmp;
-		(*dest)->next = NULL;
+		*dest = node_to_push;
+		node_to_push->next = NULL;
 	}
 	else
 	{
-		tmp->next = *dest;
-		tmp->next->prev = tmp;
-		*dest = tmp;
+		node_to_push->next = *dest;
+		node_to_push->next->prev = node_to_push;
+		*dest = node_to_push;
 	}
 }
 
@@ -45,4 +46,17 @@ void	pb(t_node **b, t_node **a)
 {
 	ft_push(a, b);
 	write(1, "pb\n", 3);
+}
+
+t_node	*return_cheapest(t_node *stack)
+{
+	if (stack == NULL)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }

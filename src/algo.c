@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:15:23 by egerin            #+#    #+#             */
-/*   Updated: 2025/02/06 12:44:14 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/11 14:08:49 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_sort_three(t_node **a)
 		sa(a);
 }
 
-t_node	*ft_find_smaller(t_node *stack)
+t_node	*ft_find_smallest(t_node *stack)
 {
 	int		i;
 	t_node	*smallest;
