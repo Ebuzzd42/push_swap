@@ -5,18 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 15:34:57 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/28 17:33:22 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:24:22 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/12 13:24:59 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_free(t_node **a)
+int	ft_repetition(t_node *a, int nbr)
 {
-	ft_stackfree(a);
-	write(1, "error\n", 6);
-	exit(1);
+	if (a == NULL)
+		return (0);
+	while (a)
+	{
+		if (a->nb == nbr)
+			return (1);
+		a = a->next;
+	}
+	return (0);
+}
+
+int	ft_char(char *str)
+{
+	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
+		return (1);
+	if ((*str == '+' || *str == '-') && !(str[1] >= '0' && str[1] <= '9'))
+		return (1);
+	while (*++str)
+	{
+		if (!(*str >= '0' && *str <= '9'))
+			return (1);
+	}
+	return (0);
 }
 
 void	ft_stackfree(t_node **a)
@@ -35,16 +55,21 @@ void	ft_stackfree(t_node **a)
 	a = NULL;
 }
 
-int	ft_char(char *str)
+void	ft_free(t_node **a)
 {
-	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
-		return (1);
-	if ((*str == '+' || *str == '-') && !(str[1] >= '0' && str[1] <= '9'))
-		return (1);
-	while (*++str)
-	{
-		if (!(*str >= '0' && *str <= '9'))
-			return (1);
-	}
-	return (0);
+	ft_stackfree(a);
+	write(1, "error\n", 6);
+	exit(1);
+}
+
+void	free_matrix(char **av)
+{
+	int	i;
+
+	i = -1;
+	if (NULL == av || NULL == *av)
+		return ;
+	while (av[i])
+		free(av[i++]);
+	free(av - 1);
 }

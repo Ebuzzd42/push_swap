@@ -5,31 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 13:50:36 by egerin            #+#    #+#             */
-/*   Updated: 2025/02/01 14:32:32 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:32:45 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/12 12:36:59 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_swap(t_node **stack)
+void	ft_swap(t_node **head)
 {
-	t_node	*a;
-	t_node	*b;
-	t_node	*c;
+	int	len;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	len = stack_len(*head);
+	if (NULL == *head || NULL == head || 1 == len)
 		return ;
-	a = *stack;
-	b = a->next;
-	c = b->next;
-	a->next = c;
-	if (c != NULL)
-		c->prev = a;
-	b->next = a;
-	a->prev = b;
-	b->prev = NULL;
-	*stack = b;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
 void	sa(t_node **a)
@@ -46,7 +42,7 @@ void	sb(t_node **b)
 
 void	ss(t_node **a, t_node **b)
 {
-	sa(a);
-	sb(b);
+	ft_swap(a);
+	ft_swap(b);
 	write(1, "ss\n", 3);
 }

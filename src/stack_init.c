@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 12:45:39 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/29 14:28:10 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:29:32 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/27 13:45:20 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,6 @@ long	ft_atol(const char *nptr)
 	return (res * sign);
 }
 
-int	ft_repetition(t_node *a, int nbr)
-{
-	if (a == NULL)
-		return (0);
-	while (a)
-	{
-		if (a->nb == nbr)
-			return (1);
-		a = a->next;
-	}
-	return (0);
-}
-
 void	init_stack(t_node **a, char **av)
 {
 	long	nbr;
@@ -63,7 +50,6 @@ void	init_stack(t_node **a, char **av)
 		if (ft_char(av[i]))
 			ft_free(a);
 		nbr = ft_atol(av[i]);
-		printf("%ld\n", nbr);
 		if (ft_repetition(*a, (int)nbr))
 			ft_free(a);
 		new_node(a, (int)nbr);
@@ -90,17 +76,8 @@ void	new_node(t_node **pile, int nbr)
 	}
 	else
 	{
-		last = find_last(*pile);
+		last = find_last_node(*pile);
 		last->next = first;
 		first->prev = last;
 	}
-}
-
-t_node	*find_last(t_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
 }

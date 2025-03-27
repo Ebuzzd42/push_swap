@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 14:27:12 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/28 14:48:11 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:37:51 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/12 13:26:14 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void	ft_rotate(t_node **stack)
 {
-	t_node	*first;
-	t_node	*last;
-	t_node	*second;
+	t_node	*last_node;
+	int		len;
 
-	if (stack == NULL || (*stack)->next == NULL)
+	len = stack_len(*stack);
+	if (NULL == stack || NULL == *stack || 1 == len)
 		return ;
-	first = *stack;
-	second = (*stack)->next;
-	last = find_last(*stack);
-	last->next = first;
-	first->prev = last;
-	first->next = NULL;
-	second->prev = NULL;
-	*stack = second;
+	last_node = find_last_node(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
 void	ra(t_node **a)
@@ -44,7 +42,7 @@ void	rb(t_node **b)
 
 void	rr(t_node **a, t_node **b)
 {
-	ra(a);
-	rb(b);
+	ft_rotate(a);
+	ft_rotate(b);
 	write(1, "rr\n", 3);
 }

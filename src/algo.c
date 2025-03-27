@@ -5,90 +5,90 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 14:15:23 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/11 14:08:49 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 13:01:21 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/27 13:38:54 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_sorted(t_node *stack)
+void	rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
-	if (!stack)
-		return (0);
-	while (stack->next)
-	{
-		if (stack->nb > stack->next->nb)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+	while (*a != cheapest_node->target_node && *b != cheapest_node)
+		rr(a, b);
+	set_current_position(*a);
+	set_current_position(*b);
 }
 
-int	ft_stack_len(t_node *stack)
+void	reverse_rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
 {
-	int	i;
-
-	i = 0;
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (i);
+	while (*a != cheapest_node->target_node && *b != cheapest_node)
+		rrr(a, b);
+	set_current_position(*a);
+	set_current_position(*b);
 }
 
-t_node	*ft_find_highest(t_node *stack)
+void	finish_rotation(t_node **stack, t_node *top_node, char stack_name)
 {
-	int		i;
-	t_node	*highest;
-
-	if (stack == NULL)
-		return (NULL);
-	i = INT_MIN;
-	while (stack)
+	while (*stack != top_node)
 	{
-		if (stack->nb > i)
+		if (stack_name == 'a')
 		{
-			i = stack->nb;
-			highest = stack;
+			if (top_node->above_median)
+				ra(stack);
+			else
+				rra(stack);
 		}
-		stack = stack->next;
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
 	}
-	return (highest);
 }
 
-void	ft_sort_three(t_node **a)
+void	move_nodes(t_node **a, t_node **b)
 {
-	t_node	*highest;
+	t_node	*cheapest_node;
 
-	highest = ft_find_highest(*a);
-	if (*a == highest)
-		ra(a);
-	else if ((*a)->next == highest)
-		rra(a);
-	if ((*a)->nb > (*a)->next->nb)
-		sa(a);
+	cheapest_node = return_cheapest(*b);
+	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
+		rotate_both(a, b, cheapest_node);
+	else if (!(cheapest_node->above_median)
+		&& !(cheapest_node->target_node->above_median))
+		reverse_rotate_both(a, b, cheapest_node);
+	finish_rotation(b, cheapest_node, 'b');
+	finish_rotation(a, cheapest_node->target_node, 'a');
+	pa(a, b);
 }
 
-t_node	*ft_find_smallest(t_node *stack)
+void	push_swap(t_node **a, t_node **b)
 {
-	int		i;
 	t_node	*smallest;
+	int		len_a;
 
-	if (stack == NULL)
-		return (NULL);
-	i = INT_MAX;
-	while (stack)
+	len_a = stack_len(*a);
+	if (len_a == 5)
+		handle_five(a, b);
+	else
 	{
-		if (stack->nb < i)
-		{
-			i = stack->nb;
-			smallest = stack;
-		}
-		stack = stack->next;
+		while (len_a-- > 3)
+			pb(b, a);
 	}
-	return (smallest);
+	tiny_sort(a);
+	while (*b)
+	{
+		init_nodes(*a, *b);
+		move_nodes(a, b);
+	}
+	set_current_position(*a);
+	smallest = find_smallest(*a);
+	if (smallest->above_median)
+		while (*a != smallest)
+			ra(a);
+	else
+		while (*a != smallest)
+			rra(a);
 }

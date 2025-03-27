@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 10:49:57 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:05 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:28:39 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/27 13:46:21 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,17 @@ int	main(int ac, char **av)
 	init_stack(&a, av + 1);
 	if (!ft_sorted(a))
 	{
-		if (ft_stack_len(a) == 2)
+		if (stack_len(a) == 2)
 			sa(&a);
-		else if (ft_stack_len(a) == 3)
-			ft_sort_three(&a);
+		else if (stack_len(a) == 3)
+			tiny_sort(&a);
 		else
-			sort_stacks(&a, &b);
+			push_swap(&a, &b);
 	}
+	// while (a)
+	// {
+	// 	printf("%d ", a->nb);
+	// 	a = a->next;
+	// }
 	ft_stackfree(&a);
 }

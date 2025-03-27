@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 14:48:25 by egerin            #+#    #+#             */
-/*   Updated: 2025/01/28 15:11:36 by egerin           ###   ########.fr       */
+/*   Created: 2025/03/12 12:36:03 by egerin            #+#    #+#             */
+/*   Updated: 2025/03/12 12:37:42 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void	ft_reverse_rotate(t_node **stack)
 {
-	t_node	*first;
-	t_node	*second_last;
 	t_node	*last;
+	int		len;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	len = stack_len(*stack);
+	if (NULL == *stack || NULL == stack || 1 == len)
 		return ;
-	first = *stack;
-	last = find_last(*stack);
-	second_last = last->prev;
-	last->next = first;
-	first->prev = last;
-	second_last->next = NULL;
+	last = find_last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
 	last->prev = NULL;
 	*stack = last;
+	last->next->prev = last;
 }
 
 void	rra(t_node **a)
@@ -44,7 +42,7 @@ void	rrb(t_node **b)
 
 void	rrr(t_node **a, t_node **b)
 {
-	rra(a);
-	rrb(b);
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
 	write(1, "rrr\n", 4);
 }

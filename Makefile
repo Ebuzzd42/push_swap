@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: egerin <egerin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/13 13:25:18 by egerin            #+#    #+#              #
-#    Updated: 2025/03/11 16:08:17 by egerin           ###   ########.fr        #
+#    Created: 2025/03/12 12:20:15 by egerin            #+#    #+#              #
+#    Updated: 2025/03/12 13:18:55 by egerin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT_TARGET = ${LIBFT}/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -I${LIBFT} -g
 LDFLAGS = -L${LIBFT} -lft
-SRC_FILES = src/main.c src/errors.c src/init_stack.c src/push.c src/reverse_rotate.c src/rotate.c src/swap.c src/algo.c src/algo2.c src/jsp.c
+SRC_FILES = src/main.c src/errors.c src/stack_init.c src/push.c src/reverse_rotate.c src/rotate.c src/swap.c src/algo.c src/algo_init.c src/sort.c src/stack_utils.c
 SRC = $(SRC_FILES)
 OBJ = $(SRC:.c=.o)
 
