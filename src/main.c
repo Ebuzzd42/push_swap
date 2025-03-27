@@ -6,11 +6,24 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:28:39 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/27 13:46:21 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/27 15:00:57 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	free_split(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
+}
 
 int	main(int ac, char **av)
 {
@@ -23,7 +36,9 @@ int	main(int ac, char **av)
 		return (1);
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-	init_stack(&a, av + 1);
+	else
+		av++;
+	init_stack(&a, av);
 	if (!ft_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -33,10 +48,7 @@ int	main(int ac, char **av)
 		else
 			push_swap(&a, &b);
 	}
-	// while (a)
-	// {
-	// 	printf("%d ", a->nb);
-	// 	a = a->next;
-	// }
+	if (ac == 2)
+		free_split(av);
 	ft_stackfree(&a);
 }

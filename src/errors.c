@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:24:22 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/12 13:24:59 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:57:31 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_stackfree(t_node **a)
 	while (tmp2)
 	{
 		tmp = tmp2->next;
-		tmp2->nb = 0;
 		free(tmp2);
 		tmp2 = tmp;
 	}

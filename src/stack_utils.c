@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:42:15 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/12 12:44:30 by egerin           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:45:16 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_node	*return_cheapest(t_node *stack)
 
 int	stack_len(t_node *stack)
 {
-	int count;
+	int	count;
 
 	if (NULL == stack)
 		return (0);
