@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:24:22 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/27 14:57:31 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/20 13:49:56 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ void	ft_stackfree(t_node **a)
 	a = NULL;
 }
 
-void	ft_free(t_node **a)
+void	ft_free(t_node **a, char **av, int ac)
 {
 	ft_stackfree(a);
+	if (ac == 2)
+		free_split(av);
 	write(1, "error\n", 6);
 	exit(1);
 }

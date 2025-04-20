@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:28:39 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/27 15:00:57 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/20 13:47:34 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_split(char **av)
 	int	i;
 
 	i = 0;
+	if (!av)
+		return ;
 	while (av[i])
 	{
 		free(av[i]);
@@ -38,7 +40,7 @@ int	main(int ac, char **av)
 		av = ft_split(av[1], ' ');
 	else
 		av++;
-	init_stack(&a, av);
+	init_stack(&a, av, ac);
 	if (!ft_sorted(a))
 	{
 		if (stack_len(a) == 2)

@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:20:29 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/12 13:17:29 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/20 13:49:13 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ void				push_swap(t_node **a, t_node **b);
 
 //// ERRORS ////
 void				free_matrix(char **av);
-void				ft_free(t_node **a);
+void				ft_free(t_node **a, char **av, int ac);
 void				ft_stackfree(t_node **a);
 int					ft_char(char *str);
 int					ft_repetition(t_node *a, int nbr);
+void				free_split(char **av);
 
 //// COMMANDS ////
 void				rotate_both(t_node **a, t_node **b, t_node *cheapest_node);
@@ -73,7 +74,7 @@ void				ss(t_node **a, t_node **b);
 
 //// UTILS ////
 long				ft_atol(const char *nptr);
-void				init_stack(t_node **a, char **av);
+void				init_stack(t_node **a, char **av, int ac);
 void				new_node(t_node **pile, int nbr);
 t_node				*find_last_node(t_node *head);
 t_node				*find_smallest(t_node *stack);

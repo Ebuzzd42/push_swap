@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:29:32 by egerin            #+#    #+#             */
-/*   Updated: 2025/03/27 14:44:39 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/20 13:50:22 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,29 @@ long	ft_atol(const char *nptr)
 	if (res > INT_MAX || res < INT_MIN)
 	{
 		write(1, "ERROR\n", 6);
-		return (0);
+		exit(0);
 	}
 	return (res * sign);
 }
 
-void	init_stack(t_node **a, char **av)
+void	init_stack(t_node **a, char **av, int ac)
 {
 	long	nbr;
 	int		i;
 
 	i = 0;
-	while (av[i])
+	if (ac)
 	{
-		if (ft_char(av[i]))
-			ft_free(a);
-		nbr = ft_atol(av[i]);
-		if (ft_repetition(*a, (int)nbr))
-			ft_free(a);
-		new_node(a, (int)nbr);
-		i++;
+		while (av[i])
+		{
+			if (ft_char(av[i]))
+				ft_free(a, av, ac);
+			nbr = ft_atol(av[i]);
+			if (ft_repetition(*a, (int)nbr))
+				ft_free(a, av, ac);
+			new_node(a, (int)nbr);
+			i++;
+		}
 	}
 }
 
