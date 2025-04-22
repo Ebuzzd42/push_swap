@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:28:39 by egerin            #+#    #+#             */
-/*   Updated: 2025/04/20 13:47:34 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:53:09 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ int	main(int ac, char **av)
 	if (ac == 2)
 		free_split(av);
 	ft_stackfree(&a);
+	ft_stackfree(&b);
 }

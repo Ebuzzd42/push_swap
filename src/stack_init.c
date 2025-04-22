@@ -6,7 +6,7 @@
 /*   By: egerin <egerin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:29:32 by egerin            #+#    #+#             */
-/*   Updated: 2025/04/20 13:50:22 by egerin           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:10:34 by egerin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ long	ft_atol(const char *nptr)
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		res = res * 10 + nptr[i++] - 48;
-	if (res > INT_MAX || res < INT_MIN)
-	{
-		write(1, "ERROR\n", 6);
-		exit(0);
-	}
 	return (res * sign);
 }
 
@@ -52,6 +47,8 @@ void	init_stack(t_node **a, char **av, int ac)
 			if (ft_char(av[i]))
 				ft_free(a, av, ac);
 			nbr = ft_atol(av[i]);
+			if (nbr > INT_MAX || nbr < INT_MIN)
+				ft_free(a, av, ac);
 			if (ft_repetition(*a, (int)nbr))
 				ft_free(a, av, ac);
 			new_node(a, (int)nbr);
@@ -72,6 +69,10 @@ void	new_node(t_node **pile, int nbr)
 		return ;
 	first->next = NULL;
 	first->nb = nbr;
+	// first->current_position = 0;
+	// first->push_price = 0;
+	// first->above_median = true;
+	// first->cheapest = true;
 	if (!(*pile))
 	{
 		*pile = first;
